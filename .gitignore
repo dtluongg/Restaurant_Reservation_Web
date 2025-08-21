@@ -1,0 +1,9 @@
+node_modules/
+#bỏ qua các thư viện của node 
+
+.env
+#loại bổ các env
+
+*.log
+#bỏ qua các file log
+

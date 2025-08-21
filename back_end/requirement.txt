@@ -1,0 +1,1 @@
+cors dotenv express nodemon mongoose multer jsonwebtoken cloudinary
