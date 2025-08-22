@@ -7,7 +7,7 @@ const addProduct = async (req, res) => {
         const image = req.file;
         let imageUrl = ""
         if(image){
-            let result = await cloudinary.uploader.upload(image.path, {resouce_type: 'image'})
+            let result = await cloudinary.uploader.upload(image.path, {resource_type: 'image'})
             imageUrl = result.secure_url
         }else{
             imageUrl = "https://via.placeholder.com/150"
@@ -28,7 +28,7 @@ const addProduct = async (req, res) => {
         res.json({success: true, message: "Product added successfully"})
     } catch(error){
         console.log(error)
-        res.json({success: false, massage: "Cannot add product"})
+        res.json({success: false, message: "Cannot add product"})
     }
 }
 
