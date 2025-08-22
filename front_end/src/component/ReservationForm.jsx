@@ -1,5 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { backendUrl } from "../App";
+import { toast } from "react-toastify";
 
 const ReservationForm = () => {
     const [formData, setFormData] = useState({
@@ -14,6 +17,28 @@ const ReservationForm = () => {
     const handleChanges = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post(`${backendUrl}/api/reservations/create`, formData)
+            toast.success("Reservation created successfully!");
+
+            setFormData({
+                name:"",
+                email:"",
+                phone:"",
+                date:"",
+                time:"",
+                guests:""
+            })
+        } catch (error) {
+            toast.error("Failed to create reservation.");
+            toast.error(error.response?.data?.message || "An error occurred");
+        }
+    }
+
 
     const ReservationForm = () => {
         const slot = [];
@@ -32,7 +57,7 @@ const ReservationForm = () => {
     return (
         <div className="min-h-screen bg-[#ffe2b7] p-6 md:p-12">
             <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-                <form action="" className="md:col-span-2 bg-white p-8 rounded-lg shadow-md">
+                <form onSubmit={handleSubmit} action="" className="md:col-span-2 bg-white p-8 rounded-lg shadow-md">
                     <h2 className="text-xl font-semibold text-amber-400 uppercase tracking-wider">
                         Reserve a Table
                     </h2>
