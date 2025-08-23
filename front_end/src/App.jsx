@@ -5,7 +5,8 @@ import Footer from './component/Footer'
 import Homepage from './pages/Homepage' 
 import { ToastContainer } from 'react-toastify'
 
-export const backendUrl = "http://localhost:4000"
+// export const backendUrl = "http://localhost:4000"
+export const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 
 const App = () => {

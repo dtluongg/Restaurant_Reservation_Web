@@ -7,7 +7,10 @@ import AdminTable from './pages/AdminTable.jsx'
 import { Route, Routes } from 'react-router-dom'
 import {ToastContainer} from 'react-toastify'
 
-export const backendUrl = "http://localhost:4000"
+// export const backendUrl = "http://localhost:4000"
+// export const backendUrl = "https://backend-restaurant-reservation.onrender.com"
+export const backendUrl = import.meta.env.VITE_BACKEND_URL
+
 
 const App = () => {
 
